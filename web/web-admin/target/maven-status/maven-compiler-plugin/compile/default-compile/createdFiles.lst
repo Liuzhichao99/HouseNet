@@ -1,0 +1,5 @@
+com\lzc\controller\DictController.class
+com\lzc\controller\RoleController.class
+com\lzc\controller\CommunityController.class
+com\lzc\controller\AdminController.class
+com\lzc\controller\FrameController.class

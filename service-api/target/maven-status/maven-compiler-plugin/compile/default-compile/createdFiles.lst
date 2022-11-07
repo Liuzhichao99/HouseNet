@@ -1,0 +1,4 @@
+com\lzc\service\RoleService.class
+com\lzc\service\AdminService.class
+com\lzc\service\DictService.class
+com\lzc\service\CommunityService.class

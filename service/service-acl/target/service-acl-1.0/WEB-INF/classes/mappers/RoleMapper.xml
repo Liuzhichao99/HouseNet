@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lzc.mapper.RoleMapper">
+
+    <sql id="columns">
+        id,role_name,role_code,description,create_time,update_time,is_deleted
+    </sql>
+
+    <!--List<Role> findAll();-->
+    <select id="findAll" resultType="Role">
+        select <include refid="columns"></include> from acl_role where is_deleted = 0
+    </select>
+
+    <!--void save(Role role);-->
+    <insert id="save">
+        insert into acl_role(role_name,role_code,description)
+        values(#{roleName},#{roleCode},#{description})
+    </insert>
+
+    <!--Role getById(Long id);-->
+    <select id="getById" resultType="Role">
+        select <include refid="columns"></include> from acl_role
+        where id = #{id}
+    </select>
+
+    <!--void update(Role role);-->
+    <update id="update">
+        update acl_role
+        <set>
+            <if test="roleName != null and roleName != ''">
+                role_name = #{roleName},
+            </if>
+            <if test="roleCode != null and roleCode != ''">
+                role_code = #{roleCode},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            update_time = now()
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--void delete(Long id);-->
+    <update id="delete">
+        update acl_role set update_time = now(), is_deleted = 1 where id = #{id}
+    </update>
+
+    <!--List<Role> findPage(Map<String, Object> filters);-->
+    <select id="findPage" resultType="Role">
+        select <include refid="columns"></include> from acl_role
+        <where>
+            <if test="roleName != null and roleName != ''">
+                role_name like "%"#{roleName}"%"
+            </if>
+            and is_deleted = 0
+        </where>
+    </select>
+
+</mapper>

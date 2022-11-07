@@ -1,0 +1,4 @@
+com\lzc\mapper\DictMapper.class
+com\lzc\service\impl\DictServiceImpl.class
+com\lzc\mapper\CommunityMapper.class
+com\lzc\service\impl\CommunityServiceImpl.class

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--配置dubbo应用的名称-->
+    <dubbo:application name="web-admin"></dubbo:application>
+
+    <!--配置注册中心的地址-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+
+    <!--是否在启动消费者时检查提供者提前启动-->
+    <dubbo:consumer check="false" timeout="60000"></dubbo:consumer>
+
+</beans>
